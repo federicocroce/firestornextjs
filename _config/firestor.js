@@ -1,4 +1,6 @@
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore'
+
 
 try {
   firebase.initializeApp({
@@ -19,9 +21,7 @@ try {
   }
 }
 
-const firebaseApp = firebase;
-
-const db = firebaseApp.firestore()
+const db = firebase.firestore()
 
 // export const get = async () => {
 //   console.log("G 1");
@@ -69,8 +69,8 @@ export const test = async () => {
   }
 }
 
-export const get = async () => {
-  const snapshot = await db.collection('test').get()
+export const get = async (collection) => {
+  const snapshot = await db.collection(collection).get()
   const data = {}
   snapshot.docs.map(doc => {
     Object.assign(data, {
@@ -81,10 +81,12 @@ export const get = async () => {
 }
 
 export const fetch = async (collection, setData) => {
-  db.collection(collection).onSnapshot(querySnapshot => {
-    var data = [];
-    querySnapshot.forEach(function (doc) {
-      data.push(doc.data().data);
+  db.collection(collection).onSnapshot(snapshot => {
+    const data = {}
+    snapshot.docs.map(doc => {
+      Object.assign(data, {
+        [doc.id]: doc.data()
+      });
     });
     console.log(data);
     setData(data);

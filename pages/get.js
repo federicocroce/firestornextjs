@@ -5,7 +5,7 @@ export default function About({ data }) {
   return (
     <div>
       <Header />
-      <p>This is the about page</p>
+      <p>This is the about page v1</p>
       <p>{Object.keys(data).map(key => data[key].data)}</p>
     </div>
   )
@@ -13,7 +13,7 @@ export default function About({ data }) {
 
 export async function getStaticProps() {
 
-  const data = await get()
+  const data = await get('test')
   console.log(data);
 
   return {
