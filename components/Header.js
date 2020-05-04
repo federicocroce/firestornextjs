@@ -16,6 +16,9 @@ export default function Header() {
       <Link href="/get">
         <a style={linkStyle}>Get</a>
       </Link>
+      <Link href="/workerF">
+        <a style={linkStyle}>Worker</a>
+      </Link>
     </div>
   )
 }
