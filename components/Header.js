@@ -19,6 +19,9 @@ export default function Header() {
       <Link href="/workerF">
         <a style={linkStyle}>Worker</a>
       </Link>
+      <Link href="/fetchLazy">
+        <a style={linkStyle}>fetchLazy</a>
+      </Link>
     </div>
   )
 }
