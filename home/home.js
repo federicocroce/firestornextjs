@@ -8,7 +8,7 @@ export default function fetchLazy() {
    useEffect(() => {
     ( async () => {
       const {fetch} = await firestoreLazy();
-      const unsubscribe = fetch('test', setData);
+      const unsubscribe = fetch('personalData', setData);
     })();
 
     return () => {

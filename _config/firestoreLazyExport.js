@@ -47,5 +47,5 @@ export default async function firestoreLazy() {
     });
   }
 
-  return firestore;
+  return db;
 }

@@ -4,14 +4,12 @@ import 'firebase/firestore'
 
 try {
   firebase.initializeApp({
-    apiKey: 'AIzaSyDINSbmIwTdqRE7yDhkow46fs3JxW5y8KM',
-    authDomain: 'test-74eeb.firebaseapp.com',
-    databaseURL: 'https://test-74eeb.firebaseio.com',
-    projectId: 'test-74eeb',
-    storageBucket: 'test-74eeb.appspot.com',
-    messagingSenderId: '984496005171',
-    appId: '1:984496005171:web:1223101227209a12284346',
-    measurementId: 'G-H81H426MJZ'
+    apiKey: "AIzaSyDINSbmIwTdqRE7yDhkow46fs3JxW5y8KM",
+    authDomain: "test-74eeb.firebaseapp.com",
+    databaseURL: "https://test-74eeb.firebaseio.com",
+    projectId: "test-74eeb",
+    storageBucket: "test-74eeb.appspot.com",
+    messagingSenderId: "984496005171"
   })
 } catch (err) {
   // we skip the "already exists" message which is
@@ -30,8 +28,9 @@ self.addEventListener(
     console.log(db);
     switch (event.data.cmd) {
       case "onSnapshot": {
-        const { collection } = event.data;
-        db.collection(collection).onSnapshot(snap => {
+        const { path } = event.data;
+        console.log(path);
+        eval(path).onSnapshot(snap => {
           const docs = {}
           snap.docs.map(doc => {
             Object.assign(docs, {
@@ -42,7 +41,7 @@ self.addEventListener(
           const size = snap.size;
           const empty = snap.empty;
           self.postMessage({
-            name: `${collection}`,
+            name: `${path}`,
             response: {
               data: { docs, size, empty },
               type: "QuerySnapshot"

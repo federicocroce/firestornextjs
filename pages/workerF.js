@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../components/Header'
 
 import firestorWorker from "../_config/firestore.worker.js";
+let path = `db.collection('test')`;
 
 export default function WorkerF() {
   const [data, setData] = useState({});
@@ -9,7 +10,7 @@ export default function WorkerF() {
 
   useEffect(() => {
     const worker = new firestorWorker();
-    worker.postMessage({ cmd: 'onSnapshot', collection: 'test' })
+    worker.postMessage({ cmd: 'onSnapshot', path})
     worker.addEventListener('message', onWorkerMessage)
 
     return () => {

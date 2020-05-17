@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import Header from '../components/Header'
-import firestoreLazy from '../_config/firestoreLazy'
+import {fetch} from '../_config/controller/controller'
 
 export default function fetchLazy() {
   const [data, setData] = useState({});
 
    useEffect(() => {
     ( async () => {
-      const {fetch} = await firestoreLazy();
-      const unsubscribe = fetch('test', setData);
+      const unsubscribe = await fetch('test', setData);
     })();
 
     return () => {
