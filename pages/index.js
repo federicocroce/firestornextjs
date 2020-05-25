@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Header from '../components/Header'
 
+
 import ExampleWorker from "../_config/test.worker.js";
 
 export default function Index() {
@@ -30,7 +31,7 @@ export default function Index() {
         <a>About Page</a>
       </Link>
       <p>Hello Next.js</p> */}
-      <p>Hello Next.js</p>
+      <p>Hello test Next.js</p>
      <h1>Message from Worker: {data.latestMessage}</h1>
  
     </div>

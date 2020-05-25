@@ -1,5 +1,5 @@
 // import firestoreLazy from '../_config/firestoreLazy';
-import firestorWorker from "../_config/firestore.worker.js";
+import firestorWorker from "../../_config/firestore.worker.js";
 const collection = 'test';
 let path = `db.collection('${collection}')`;
 

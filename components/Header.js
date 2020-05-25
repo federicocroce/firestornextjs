@@ -10,6 +10,9 @@ export default function Header() {
       <Link href="/">
         <a style={linkStyle}>Index</a>
       </Link>
+      <Link href="/main">
+        <a style={linkStyle}>Main</a>
+      </Link>
       <Link href="/home">
         <a style={linkStyle}>Home</a>
       </Link>

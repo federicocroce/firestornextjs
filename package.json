@@ -16,7 +16,8 @@
     "@next/bundle-analyzer": "^9.3.6",
     "next": "^9.3.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sass": "^1.26.5"
   },
   "devDependencies": {
     "@zeit/next-workers": "^1.0.0",

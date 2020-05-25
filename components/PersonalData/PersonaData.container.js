@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
-import Header from '../components/Header'
-import firestoreLazy from '../_config/firestoreLazy'
+import firestoreLazy from '../../_config/firestoreLazy';
+import  styles from './PersonalData.module.scss';
 
-export default function fetchLazy() {
+export default function PersonaDataContainer() {
   const [personalData, setPersonalData] = useState({});
-  const [estudiesData, setEstudiesData] = useState({});
 
    useEffect(() => {
     ( async () => {
       const {fetch} = await firestoreLazy();
       const unsubscribe = fetch('personalData', setPersonalData);
-      const unsubscribe1 = fetch('estudies', setEstudiesData);
     })();
 
     return () => {
@@ -19,11 +17,9 @@ export default function fetchLazy() {
   }, []);
   console.log(personalData);
   return (
-    <div>
-      <Header />
+    <div className={styles.container}>
       <p>This is the about page v1</p>
       <p>{Object.keys(personalData).map(key => personalData[key].mainData.height)}</p>
-      <p>{Object.keys(estudiesData).map(key => estudiesData[key].details && estudiesData[key].details.institution)}</p>
     </div>
   )
 }
