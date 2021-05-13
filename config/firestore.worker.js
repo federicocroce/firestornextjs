@@ -30,8 +30,9 @@ self.addEventListener(
     console.log(db);
     switch (event.data.cmd) {
       case "onSnapshot": {
-        const { collection } = event.data;
-        db.collection(collection).onSnapshot(snap => {
+        const { path } = event.data;
+        console.log(path);
+        eval(path).onSnapshot(snap => {
           const docs = {}
           snap.docs.map(doc => {
             Object.assign(docs, {
@@ -42,7 +43,7 @@ self.addEventListener(
           const size = snap.size;
           const empty = snap.empty;
           self.postMessage({
-            name: `${collection}`,
+            name: `${path}`,
             response: {
               data: { docs, size, empty },
               type: "QuerySnapshot"

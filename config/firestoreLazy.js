@@ -6,18 +6,14 @@ export default async function firestoreLazy() {
 
   try {
     firebase.initializeApp({
-      apiKey: 'AIzaSyDINSbmIwTdqRE7yDhkow46fs3JxW5y8KM',
-      authDomain: 'test-74eeb.firebaseapp.com',
-      databaseURL: 'https://test-74eeb.firebaseio.com',
-      projectId: 'test-74eeb',
-      storageBucket: 'test-74eeb.appspot.com',
-      messagingSenderId: '984496005171',
-      appId: '1:984496005171:web:1223101227209a12284346',
-      measurementId: 'G-H81H426MJZ'
+      apiKey: "AIzaSyDINSbmIwTdqRE7yDhkow46fs3JxW5y8KM",
+      authDomain: "test-74eeb.firebaseapp.com",
+      databaseURL: "https://test-74eeb.firebaseio.com",
+      projectId: "test-74eeb",
+      storageBucket: "test-74eeb.appspot.com",
+      messagingSenderId: "984496005171"
     })
   } catch (err) {
-    // we skip the "already exists" message which is
-    // not an actual error when we're hot-reloading
     if (!/already exists/.test(err.message)) {
       console.error('Firebase initialization error raised', err.stack)
     }
@@ -35,9 +31,9 @@ export default async function firestoreLazy() {
     });
     return data;
   }
-  
+
   firestore.fetch = async (collection, setData) => {
-    db.collection(collection).onSnapshot(snapshot => {
+    return db.collection(collection).onSnapshot(snapshot => {
       const data = {}
       snapshot.docs.map(doc => {
         Object.assign(data, {
@@ -45,7 +41,7 @@ export default async function firestoreLazy() {
         });
       });
       console.log(data);
-      setData(data);
+      setData && setData(data);
     });
   }
 

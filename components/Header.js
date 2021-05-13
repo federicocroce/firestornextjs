@@ -8,6 +8,9 @@ export default function Header() {
   return (
     <div>
       <Link href="/">
+        <a style={linkStyle}>Index</a>
+      </Link>
+      <Link href="/home">
         <a style={linkStyle}>Home</a>
       </Link>
       <Link href="/fetch">
@@ -21,6 +24,9 @@ export default function Header() {
       </Link>
       <Link href="/fetchLazy">
         <a style={linkStyle}>fetchLazy</a>
+      </Link>
+      <Link href="/fetchLazyController">
+        <a style={linkStyle}>fetchLazyController</a>
       </Link>
     </div>
   )
